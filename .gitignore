@@ -1,0 +1,21 @@
+# Local-only databases, backups, and personal shortcuts
+_local-only/
+
+# Safety net: never allow credential files or Windows shortcuts on GitHub
+*credential*
+*password*
+*.lnk
+*.url
+
+# FileMaker Pro 7.0 & Windows temporary files
+*.fp7.lock
+*.tmp
+Thumbs.db
+desktop.ini
+
+# Python artifacts (for future scripts in scripts\)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
