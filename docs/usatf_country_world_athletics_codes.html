@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ISO 3166 country codes and World Athletics (IAAF) affiliation codes used by the USATF Records Committee." />
+  <meta name="author" content="Justin Kuo" />
+  <title>USATF Records — Country &amp; World Athletics Codes</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              900: '#0B1F3A',
+              800: '#132E52',
+              700: '#1C3F6E',
+            },
+            crimson: {
+              600: '#C8102E',
+              700: '#A50D26',
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Toast Notification for Click-to-Copy -->
+  <div id="copyToast" class="fixed bottom-5 right-5 z-50 bg-navy-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-lg opacity-0 pointer-events-none transition-opacity duration-200 flex items-center gap-2">
+    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+    </svg>
+    <span id="copyToastText">Copied to clipboard</span>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-navy-900 text-white shadow-md sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-3">
+        <!-- Brand / Title -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-crimson-600 flex items-center justify-center font-extrabold text-lg tracking-tight shadow-sm shrink-0">
+            TF
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest text-slate-300 font-semibold">USATF Records Resources</p>
+            <h1 class="text-lg sm:text-xl font-bold leading-tight">Country &amp; World Athletics Codes</h1>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex flex-wrap items-center gap-2 text-sm font-medium">
+          <a href="database-fields.html" class="px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">
+            Database Fields
+          </a>
+          <a href="country-codes.html" class="px-3 py-2 rounded-lg bg-white/15 text-white border border-white/20">
+            Country Codes
+          </a>
+          <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-crimson-600 hover:bg-crimson-700 text-white transition inline-flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Repo
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-6">
+
+    <!-- Overview & Controls Card -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+        <div class="space-y-3 max-w-4xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-navy-800 text-xs font-semibold">
+            ISO 3166 Alpha-2 / Alpha-3 &bull; World Athletics (IAAF) Affiliation Codes
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
+            Country &amp; Affiliation Code Lookup
+          </h2>
+          <p class="text-slate-600 leading-relaxed">
+            This reference lists the 2-character ISO 3166 country codes (<strong>alpha2</strong>) and 3-character World Athletics / IAAF affiliation codes (<strong>IAAF</strong>) used by the USATF Records Committee when coding records. <strong>nameProper</strong> and <strong>IAAFNameProper</strong> are used for web and print display. Click any code badge below to copy it instantly.
+          </p>
+        </div>
+
+        <div class="shrink-0">
+          <button id="downloadCsvBtn" type="button" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center justify-center gap-2 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+            </svg>
+            Download CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Search & Filter Bar -->
+      <div class="mt-6 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="relative flex-grow max-w-md">
+          <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+          <input
+            id="codeSearch"
+            type="text"
+            placeholder="Search country name, ISO code (US), or WA/IAAF (USA)..."
+            class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-navy-700 focus:border-navy-700 text-sm transition"
+          />
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" data-filter="all" class="code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 text-white transition">All Entries</button>
+          <button type="button" data-filter="iaaf" class="code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">WA / IAAF Members Only</button>
+          <button type="button" data-filter="diff" class="code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Alpha-3 &ne; WA/IAAF</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Table Card -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <h3 class="font-bold text-navy-900 text-base">Country &amp; Affiliation Directory</h3>
+        <span id="codeCount" class="text-xs font-medium text-slate-500">Loading codes...</span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-navy-900 text-white text-xs uppercase tracking-wider">
+              <th class="py-3.5 px-4 font-semibold">ISO Name (Proper)</th>
+              <th class="py-3.5 px-4 font-semibold">WA / IAAF Name</th>
+              <th class="py-3.5 px-4 font-semibold text-center w-28">Alpha-2</th>
+              <th class="py-3.5 px-4 font-semibold text-center w-28">Alpha-3</th>
+              <th class="py-3.5 px-4 font-semibold text-center w-32">WA / IAAF</th>
+            </tr>
+          </thead>
+          <tbody id="codesTableBody" class="divide-y divide-slate-200 text-sm">
+            <!-- Rendered dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty Search State -->
+      <div id="emptyState" class="hidden py-12 px-6 text-center">
+        <p class="text-slate-500 font-medium">No countries or codes matched your search.</p>
+        <button id="resetSearchBtn" type="button" class="mt-3 px-4 py-2 rounded-lg bg-navy-900 text-white text-sm font-medium hover:bg-navy-800 transition">
+          Reset Search
+        </button>
+      </div>
+    </section>
+
+    <!-- Additional Resources Card -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <h3 class="text-lg font-bold text-navy-900 mb-3">Additional References</h3>
+      <ul class="space-y-2 text-sm text-slate-600 list-disc list-inside">
+        <li>
+          <a href="https://www.iso.org/iso-3166-country-codes.html" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">
+            ISO 3166 Official Country Codes Standard
+          </a>
+        </li>
+        <li>
+          <a href="https://worldathletics.org/about-iaaf/structure/member-federations" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">
+            World Athletics Member Federations Directory
+          </a>
+        </li>
+        <li>
+          Original dataset compiled February 9, 2005 for the USATF Records Committee. For updates or corrections, please open an issue or pull request on the
+          <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">GitHub repository</a>.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>USA Track &amp; Field Records Documentation &bull; Maintained by Justin Kuo</p>
+      <div class="flex items-center gap-4">
+        <a href="database-fields.html" class="hover:text-navy-900 transition">Database Fields</a>
+        <span>&bull;</span>
+        <a href="country-codes.html" class="hover:text-navy-900 transition">Country Codes</a>
+        <span>&bull;</span>
+        <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="hover:text-navy-900 transition">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Complete dataset from legacy country-codes.html:
+    // [name, nameProper, IAAFName, IAAFNameProper, alpha2, alpha3, IAAF]
+    const COUNTRY_CODES = [
+      ["AFGHANISTAN","Afghanistan","AFGHANISTAN","Afghanistan","AF","AFG","AFG"],
+      ["ALBANIA","Albania","ALBANIA","Albania","AL","ALB","ALB"],
+      ["ALGERIA","Algeria","ALGERIA","Algeria","DZ","DZA","ALG"],
+      ["AMERICAN SAMOA","American Samoa","AMERICAN SAMOA","American Samoa","AS","ASM","ASA"],
+      ["ANDORRA","Andorra","ANDORRA","Andorra","AD","AND","AND"],
+      ["ANGOLA","Angola","ANGOLA","Angola","AO","AGO","ANG"],
+      ["ANGUILLA","Anguilla","ANGUILLA","Anguilla","AI","AIA","AIA"],
+      ["ANTARCTICA","Antarctica","","","AQ","ATA",""],
+      ["ANTIGUA AND BARBUDA","Antigua and Barbuda","ANTIGUA & BARBUDA","Antigua & Barbuda","AG","ATG","ANT"],
+      ["ARGENTINA","Argentina","ARGENTINA","Argentina","AR","ARG","ARG"],
+      ["ARMENIA","Armenia","ARMENIA","Armenia","AM","ARM","ARM"],
+      ["ARUBA","Aruba","ARUBA","Aruba","AW","ABW","ARU"],
+      ["AUSTRALIA","Australia","AUSTRALIA","Australia","AU","AUS","AUS"],
+      ["AUSTRIA","Austria","AUSTRIA","Austria","AT","AUT","AUT"],
+      ["AZERBAIJAN","Azerbaijan","AZERBAIJAN","Azerbaijan","AZ","AZE","AZE"],
+      ["BAHAMAS","Bahamas","BAHAMAS","Bahamas","BS","BHS","BAH"],
+      ["BAHRAIN","Bahrain","BAHRAIN","Bahrain","BH","BHR","BRN"],
+      ["BANGLADESH","Bangladesh","BANGLADESH","Bangladesh","BD","BGD","BAN"],
+      ["BARBADOS","Barbados","BARBADOS","Barbados","BB","BRB","BAR"],
+      ["BELARUS","Belarus","BELARUS","Belarus","BY","BLR","BLR"],
+      ["BELGIUM","Belgium","BELGIUM","Belgium","BE","BEL","BEL"],
+      ["BELIZE","Belize","BELIZE","Belize","BZ","BLZ","BIZ"],
+      ["BENIN","Benin","BENIN","Benin","BJ","BEN","BEN"],
+      ["BERMUDA","Bermuda","BERMUDA","Bermuda","BM","BMU","BER"],
+      ["BHUTAN","Bhutan","BHUTAN","Bhutan","BT","BTN","BHU"],
+      ["BOLIVIA","Bolivia","BOLIVIA","Bolivia","BO","BOL","BOL"],
+      ["BOSNIA AND HERZEGOVINA","Bosnia and Herzegovina","BOSNIA & HERZEGOVINA","Bosnia & Herzegovina","BA","BIH","BIH"],
+      ["BOTSWANA","Botswana","BOTSWANA","Botswana","BW","BWA","BOT"],
+      ["BOUVET ISLAND","Bouvet Island","","","BV","BVT",""],
+      ["BRAZIL","Brazil","BRAZIL","Brazil","BR","BRA","BRA"],
+      ["BRITISH INDIAN OCEAN TERRITORY","British Indian Ocean Territory","","","IO","IOT",""],
+      ["BRUNEI DARUSSALAM","Brunei Darussalam","BRUNEI","Brunei","BN","BRN","BRU"],
+      ["BULGARIA","Bulgaria","BULGARIA","Bulgaria","BG","BGR","BUL"],
+      ["BURKINA FASO","Burkina Faso","BURKINA FASO","Burkina Faso","BF","BFA","BUR"],
+      ["BURUNDI","Burundi","BURUNDI","Burundi","BI","BDI","BDI"],
+      ["CAMBODIA","Cambodia","CAMBODIA","Cambodia","KH","KHM","CAM"],
+      ["CAMEROON","Cameroon","CAMEROON","Cameroon","CM","CMR","CMR"],
+      ["CANADA","Canada","CANADA","Canada","CA","CAN","CAN"],
+      ["CAPE VERDE","Cape Verde","CAPE VERDE ISLANDS","Cape Verde Islands","CV","CPV","CPV"],
+      ["CAYMAN ISLANDS","Cayman Islands","CAYMAN ISLANDS","Cayman Islands","KY","CYM","CAY"],
+      ["CENTRAL AFRICAN REPUBLIC","Central African Republic","CENTRAL AFRICAN REPUBLIC","Central African Republic","CF","CAF","CAF"],
+      ["CHAD","Chad","CHAD","Chad","TD","TCD","CHA"],
+      ["CHILE","Chile","CHILE","Chile","CL","CHL","CHI"],
+      ["CHINA","China","CHINA, PEOPLE'S REPUBLIC OF","China, People's Republic of","CN","CHN","CHN"],
+      ["CHRISTMAS ISLAND","Christmas Island","","","CX","CXR",""],
+      ["COCOS (KEELING) ISLANDS","Cocos (Keeling) Islands","","","CC","CCK",""],
+      ["COLOMBIA","Colombia","COLOMBIA","Colombia","CO","COL","COL"],
+      ["COMOROS","Comoros","COMOROS","Comoros","KM","COM","COM"],
+      ["CONGO","Congo","CONGO","Congo","CG","COG","COD"],
+      ["CONGO, THE DEMOCRATIC REPUBLIC OF THE","Congo, The Democratic Republic of the","CONGO, DEMOCRATIC REPUBLIC OF","Congo, Democratic Republic of","CD","COD","COD"],
+      ["COOK ISLANDS","Cook Islands","COOK ISLANDS","Cook Islands","CK","COK","COK"],
+      ["COSTA RICA","Costa Rica","COSTA RICA","Costa Rica","CR","CRI","CRC"],
+      ["COTE D'IVOIRE","Cote D'Ivoire","IVORY COAST","Ivory Coast","CI","CIV","CIV"],
+      ["CROATIA","Croatia","CROATIA","Croatia","HR","HRV","CRO"],
+      ["CUBA","Cuba","CUBA","Cuba","CU","CUB","CUB"],
+      ["CYPRUS","Cyprus","CYPRUS","Cyprus","CY","CYP","CYP"],
+      ["CZECH REPUBLIC","Czech Republic","CZECH REPUBLIC","Czech Republic","CZ","CZE","CZE"],
+      ["DENMARK","Denmark","DENMARK","Denmark","DK","DNK","DEN"],
+      ["DJIBOUTI","Djibouti","DJIBOUTI","Djibouti","DJ","DJI","DJI"],
+      ["DOMINICA","Dominica","DOMINICA","Dominica","DM","DMA","DMA"],
+      ["DOMINICAN REPUBLIC","Dominican Republic","DOMINICAN REPUBLIC","Dominican Republic","DO","DOM","DOM"],
+      ["TIMOR-LESTE","Timor-Leste","EAST TIMOR","East Timor","TL","TLS","TLS"],
+      ["ECUADOR","Ecuador","ECUADOR","Ecuador","EC","ECU","ECU"],
+      ["EGYPT","Egypt","EGYPT","Egypt","EG","EGY","EGY"],
+      ["EL SALVADOR","El Salvador","EL SALVADOR","El Salvador","SV","SLV","ESA"],
+      ["EQUATORIAL GUINEA","Equatorial Guinea","EQUATORIAL GUINEA","Equatorial Guinea","GQ","GNQ","GEQ"],
+      ["ERITREA","Eritrea","ERITREA","Eritrea","ER","ERI","ERI"],
+      ["ESTONIA","Estonia","ESTONIA","Estonia","EE","EST","EST"],
+      ["ETHIOPIA","Ethiopia","ETHIOPIA","Ethiopia","ET","ETH","ETH"],
+      ["FALKLAND ISLANDS (MALVINAS)","Falkland Islands (Malvinas)","","","FK","FLK",""],
+      ["FAROE ISLANDS","Faroe Islands","","","FO","FRO",""],
+      ["FIJI","Fiji","FIJI","Fiji","FJ","FJI","FIJ"],
+      ["FINLAND","Finland","FINLAND","Finland","FI","FIN","FIN"],
+      ["FRANCE","France","FRANCE","France","FR","FRA","FRA"],
+      ["FRENCH GUIANA","French Guiana","","","GF","GUF",""],
+      ["FRENCH POLYNESIA","French Polynesia","FRENCH POLYNESIA","French Polynesia","PF","PYF","PYF"],
+      ["FRENCH SOUTHERN TERRITORIES","French Southern Territories","","","TF","ATF",""],
+      ["GABON","Gabon","GABON","Gabon","GA","GAB","GAB"],
+      ["GAMBIA","Gambia","THE GAMBIA","The Gambia","GM","GMB","GAM"],
+      ["GEORGIA","Georgia","GEORGIA","Georgia","GE","GEO","GEO"],
+      ["GERMANY","Germany","GERMANY","Germany","DE","DEU","GER"],
+      ["GHANA","Ghana","GHANA","Ghana","GH","GHA","GHA"],
+      ["GIBRALTAR","Gibraltar","GIBRALTAR","Gibraltar","GI","GIB","GIB"],
+      ["GREECE","Greece","GREECE","Greece","GR","GRC","GRE"],
+      ["GREENLAND","Greenland","","","GL","GRL",""],
+      ["GRENADA","Grenada","GRENADA","Grenada","GD","GRD","GRN"],
+      ["GUADELOUPE","Guadeloupe","","","GP","GLP",""],
+      ["GUAM","Guam","GUAM","Guam","GU","GUM","GUM"],
+      ["GUATEMALA","Guatemala","GUATEMALA","Guatemala","GT","GTM","GUA"],
+      ["GUINEA","Guinea","GUINEA","Guinea","GN","GIN","GUI"],
+      ["GUINEA-BISSAU","Guinea-Bissau","GUINEA-BISSAU","Guinea-Bissau","GW","GNB","GBS"],
+      ["GUYANA","Guyana","GUYANA","Guyana","GY","GUY","GUY"],
+      ["HAITI","Haiti","HAITI","Haiti","HT","HTI","HAI"],
+      ["HEARD ISLAND AND MCDONALD ISLANDS","Heard Island and McDonald Islands","","","HM","HMD",""],
+      ["HOLY SEE (VATICAN CITY STATE)","Holy See (Vatican City State)","","","VA","VAT",""],
+      ["HONDURAS","Honduras","HONDURAS","Honduras","HN","HND","HON"],
+      ["HONG KONG","Hong Kong","HONG KONG-CHINA","Hong Kong-China","HK","HKG","HKG"],
+      ["HUNGARY","Hungary","HUNGARY","Hungary","HU","HUN","HUN"],
+      ["ICELAND","Iceland","ICELAND","Iceland","IS","ISL","ISL"],
+      ["INDIA","India","INDIA","India","IN","IND","IND"],
+      ["INDONESIA","Indonesia","INDONESIA","Indonesia","ID","IDN","INA"],
+      ["IRAN, ISLAMIC REPUBLIC OF","Iran, Islamic Republic of","IRAN","Iran","IR","IRN","IRI"],
+      ["IRAQ","Iraq","IRAQ","Iraq","IQ","IRQ","IRQ"],
+      ["IRELAND","Ireland","IRELAND","Ireland","IE","IRL","IRL"],
+      ["ISRAEL","Israel","ISRAEL","Israel","IL","ISR","ISR"],
+      ["ITALY","Italy","ITALY","Italy","IT","ITA","ITA"],
+      ["JAMAICA","Jamaica","JAMAICA","Jamaica","JM","JAM","JAM"],
+      ["JAPAN","Japan","JAPAN","Japan","JP","JPN","JPN"],
+      ["JORDAN","Jordan","JORDAN","Jordan","JO","JOR","JOR"],
+      ["KAZAKHSTAN","Kazakhstan","KAZAKHSTAN","Kazakhstan","KZ","KAZ","KAZ"],
+      ["KENYA","Kenya","KENYA","Kenya","KE","KEN","KEN"],
+      ["KIRIBATI","Kiribati","KIRIBATI","Kiribati","KI","KIR","KIR"],
+      ["KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF","Korea, Democratic People's Republic of","KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF","Korea, Democratic People's Republic of","KP","PRK","PRK"],
+      ["KOREA, REPUBLIC OF","Korea, Republic of","KOREA","Korea","KR","KOR","KOR"],
+      ["KUWAIT","Kuwait","KUWAIT","Kuwait","KW","KWT","KUW"],
+      ["KYRGYZSTAN","Kyrgyzstan","KYRGHYZSTAN","Kyrghyzstan","KG","KGZ","KGZ"],
+      ["LAO PEOPLE'S DEMOCRATIC REPUBLIC","Lao People's Democratic Republic","LAOS","Laos","LA","LAO","LAO"],
+      ["LATVIA","Latvia","LATVIA","Latvia","LV","LVA","LAT"],
+      ["LEBANON","Lebanon","LEBANON","Lebanon","LB","LBN","LIB"],
+      ["LESOTHO","Lesotho","LESOTHO","Lesotho","LS","LSO","LES"],
+      ["LIBERIA","Liberia","LIBERIA","Liberia","LR","LBR","LBR"],
+      ["LIBYAN ARAB JAMAHIRIYA","Libyan Arab Jamahiriya","LIBYA","Libya","LY","LBY","LBA"],
+      ["LIECHTENSTEIN","Liechtenstein","LIECHTENSTEIN","Liechtenstein","LI","LIE","LIE"],
+      ["LITHUANIA","Lithuania","LITHUANIA","Lithuania","LT","LTU","LTU"],
+      ["LUXEMBOURG","Luxembourg","LUXEMBOURG","Luxembourg","LU","LUX","LUX"],
+      ["MACAO","Macao","MACAO","Macao","MO","MAC","MAC"],
+      ["MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF","Macedonia, The Former Yugoslav Republic of","MACEDONIA, FORMER YUGOSLAV REPUBLIC OF","Macedonia, Former Yugoslav Republic of","MK","MKD","MKD"],
+      ["MADAGASCAR","Madagascar","MADAGASCAR","Madagascar","MG","MDG","MAD"],
+      ["MALAWI","Malawi","MALAWI","Malawi","MW","MWI","MAW"],
+      ["MALAYSIA","Malaysia","MALAYSIA","Malaysia","MY","MYS","MAS"],
+      ["MALDIVES","Maldives","MALDIVES","Maldives","MV","MDV","MDV"],
+      ["MALI","Mali","MALI","Mali","ML","MLI","MLI"],
+      ["MALTA","Malta","MALTA","Malta","MT","MLT","MLT"],
+      ["MARSHALL ISLANDS","Marshall Islands","MARSHALL ISLANDS","Marshall Islands","MH","MHL","MSH"],
+      ["MARTINIQUE","Martinique","","","MQ","MTQ",""],
+      ["MAURITANIA","Mauritania","MAURITANIA","Mauritania","MR","MRT","MTN"],
+      ["MAURITIUS","Mauritius","MAURITIUS","Mauritius","MU","MUS","MRI"],
+      ["MAYOTTE","Mayotte","","","YT","MYT",""],
+      ["MEXICO","Mexico","MEXICO","Mexico","MX","MEX","MEX"],
+      ["MICRONESIA, FEDERATED STATES OF","Micronesia, Federated States of","MICRONESIA","Micronesia","FM","FSM","FSM"],
+      ["MOLDOVA, REPUBLIC OF","Moldova, Republic of","MOLDOVA","Moldova","MD","MDA","MDA"],
+      ["MONACO","Monaco","MONACO","Monaco","MC","MCO","MON"],
+      ["MONGOLIA","Mongolia","MONGOLIA","Mongolia","MN","MNG","MGL"],
+      ["MONTSERRAT","Montserrat","MONTSERRAT","Montserrat","MS","MSR","MNT"],
+      ["MOROCCO","Morocco","MOROCCO","Morocco","MA","MAR","MAR"],
+      ["MOZAMBIQUE","Mozambique","MOZAMBIQUE","Mozambique","MZ","MOZ","MOZ"],
+      ["MYANMAR","Myanmar","MYANMAR","Myanmar","MM","MMR","MYA"],
+      ["NAMIBIA","Namibia","NAMIBIA","Namibia","NA","NAM","NAM"],
+      ["NAURU","Nauru","NAURU","Nauru","NR","NRU","NRU"],
+      ["NEPAL","Nepal","NEPAL","Nepal","NP","NPL","NEP"],
+      ["NETHERLANDS","Netherlands","NETHERLANDS","Netherlands","NL","NLD","NED"],
+      ["NETHERLANDS ANTILLES","Netherlands Antilles","NETHERLANDS ANTILLES","Netherlands Antilles","AN","ANT","AHO"],
+      ["NEW CALEDONIA","New Caledonia","","","NC","NCL",""],
+      ["NEW ZEALAND","New Zealand","NEW ZEALAND","New Zealand","NZ","NZL","NZL"],
+      ["NICARAGUA","Nicaragua","NICARAGUA","Nicaragua","NI","NIC","NCA"],
+      ["NIGER","Niger","NIGER","Niger","NE","NER","NIG"],
+      ["NIGERIA","Nigeria","NIGERIA","Nigeria","NG","NGA","NGR"],
+      ["NIUE","Niue","","","NU","NIU",""],
+      ["NORFOLK ISLAND","Norfolk Island","NORFOLK ISLAND","Norfolk Island","NF","NFK","NFI"],
+      ["NORTHERN MARIANA ISLANDS","Northern Mariana Islands","NORTHERN MARIANAS ISLANDS","Northern Marianas Islands","MP","MNP","NMA"],
+      ["NORWAY","Norway","NORWAY","Norway","NO","NOR","NOR"],
+      ["OMAN","Oman","OMAN","Oman","OM","OMN","OMN"],
+      ["PAKISTAN","Pakistan","PAKISTAN","Pakistan","PK","PAK","PAK"],
+      ["PALAU","Palau","PALAU","Palau","PW","PLW","PLW"],
+      ["PALESTINIAN TERRITORY, OCCUPIED","Palestinian Territory, Occupied","PALESTINE","Palestine","PS","PSE","PLE"],
+      ["PANAMA","Panama","PANAMA","Panama","PA","PAN","PAN"],
+      ["PAPUA NEW GUINEA","Papua New Guinea","PAPUA NEW GUINEA","Papua New Guinea","PG","PNG","PNG"],
+      ["PARAGUAY","Paraguay","PARAGUAY","Paraguay","PY","PRY","PAR"],
+      ["PERU","Peru","PERU","Peru","PE","PER","PER"],
+      ["PHILIPPINES","Philippines","PHILIPPINES","Philippines","PH","PHL","PHI"],
+      ["PITCAIRN","Pitcairn","","","PN","PCN",""],
+      ["POLAND","Poland","POLAND","Poland","PL","POL","POL"],
+      ["PORTUGAL","Portugal","PORTUGAL","Portugal","PT","PRT","POR"],
+      ["PUERTO RICO","Puerto Rico","PUERTO RICO","Puerto Rico","PR","PRI","PUR"],
+      ["QATAR","Qatar","QATAR","Qatar","QA","QAT","QAT"],
+      ["REUNION","Reunion","","","RE","REU",""],
+      ["ROMANIA","Romania","ROMANIA","Romania","RO","ROU","ROM"],
+      ["RUSSIAN FEDERATION","Russian Federation","RUSSIA","Russia","RU","RUS","RUS"],
+      ["RWANDA","Rwanda","RWANDA","Rwanda","RW","RWA","RWA"],
+      ["SAINT HELENA","Saint Helena","","","SH","SHN",""],
+      ["SAINT KITTS AND NEVIS","Saint Kitts and Nevis","SAINT KITTS & NEVIS","Saint Kitts & Nevis","KN","KNA","SKN"],
+      ["SAINT LUCIA","Saint Lucia","SAINT LUCIA","Saint Lucia","LC","LCA","LCA"],
+      ["SAINT PIERRE AND MIQUELON","Saint Pierre and Miquelon","","","PM","SPM",""],
+      ["SAINT VINCENT AND THE GRENADINES","Saint Vincent and the Grenadines","SAINT VINCENT","Saint Vincent","VC","VCT","VIN"],
+      ["SAMOA","Samoa","SAMOA","Samoa","WS","WSM","SAM"],
+      ["SAN MARINO","San Marino","SAN MARINO","San Marino","SM","SMR","SMR"],
+      ["SAO TOME AND PRINCIPE","Sao Tome and Principe","SAO TOME E PRINCIPE, DEMOCRATIC REPUBLIC OF","Sao Tome E Principe, Democratic Republic of","ST","STP","STP"],
+      ["SAUDI ARABIA","Saudi Arabia","SAUDI ARABIA","Saudi Arabia","SA","SAU","KSA"],
+      ["SENEGAL","Senegal","SENEGAL","Senegal","SN","SEN","SEN"],
+      ["SEYCHELLES","Seychelles","SEYCHELLES","Seychelles","SC","SYC","SEY"],
+      ["SIERRA LEONE","Sierra Leone","SIERRA LEONE","Sierra Leone","SL","SLE","SLE"],
+      ["SINGAPORE","Singapore","SINGAPORE","Singapore","SG","SGP","SIN"],
+      ["SLOVAKIA","Slovakia","SLOVAK REPUBLIC","Slovak Republic","SK","SVK","SVK"],
+      ["SLOVENIA","Slovenia","SLOVENIA","Slovenia","SI","SVN","SLO"],
+      ["SOLOMON ISLANDS","Solomon Islands","SOLOMON ISLANDS","Solomon Islands","SB","SLB","SOL"],
+      ["SOMALIA","Somalia","SOMALIA","Somalia","SO","SOM","SOM"],
+      ["SOUTH AFRICA","South Africa","SOUTH AFRICA","South Africa","ZA","ZAF","RSA"],
+      ["SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS","South Georgia and the South Sandwich Islands","","","GS","SGS",""],
+      ["SPAIN","Spain","SPAIN","Spain","ES","ESP","ESP"],
+      ["SRI LANKA","Sri Lanka","SRI LANKA","Sri Lanka","LK","LKA","SRI"],
+      ["SUDAN","Sudan","SUDAN","Sudan","SD","SDN","SUD"],
+      ["SURINAME","Suriname","SURINAM","Surinam","SR","SUR","SUR"],
+      ["SVALBARD AND JAN MAYEN","Svalbard and Jan Mayen","","","SJ","SJM",""],
+      ["SWAZILAND","Swaziland","SWAZILAND","Swaziland","SZ","SWZ","SWZ"],
+      ["SWEDEN","Sweden","SWEDEN","Sweden","SE","SWE","SWE"],
+      ["SWITZERLAND","Switzerland","SWITZERLAND","Switzerland","CH","CHE","SUI"],
+      ["SYRIAN ARAB REPUBLIC","Syrian Arab Republic","SYRIA","Syria","SY","SYR","SYR"],
+      ["TAIWAN, PROVINCE OF CHINA","Taiwan, Province of China","","","TW","TWN",""],
+      ["TAJIKISTAN","Tajikistan","TAJIKISTAN","Tajikistan","TJ","TJK","TJK"],
+      ["TANZANIA, UNITED REPUBLIC OF","Tanzania, United Republic of","TANZANIA","Tanzania","TZ","TZA","TAN"],
+      ["THAILAND","Thailand","THAILAND","Thailand","TH","THA","THA"],
+      ["TOGO","Togo","TOGO","Togo","TG","TGO","TOG"],
+      ["TOKELAU","Tokelau","","","TK","TKL",""],
+      ["TONGA","Tonga","TONGA","Tonga","TO","TON","TGA"],
+      ["TRINIDAD AND TOBAGO","Trinidad and Tobago","TRINIDAD & TOBAGO","Trinidad & Tobago","TT","TTO","TRI"],
+      ["TUNISIA","Tunisia","TUNISIA","Tunisia","TN","TUN","TUN"],
+      ["TURKEY","Turkey","TURKEY","Turkey","TR","TUR","TUR"],
+      ["TURKMENISTAN","Turkmenistan","TURKMENISTAN","Turkmenistan","TM","TKM","TKM"],
+      ["TURKS AND CAICOS ISLANDS","Turks and Caicos Islands","TURKS & CAICOS ISLANDS","Turks & Caicos Islands","TC","TCA","TKS"],
+      ["TUVALU","Tuvalu","","","TV","TUV",""],
+      ["UGANDA","Uganda","UGANDA","Uganda","UG","UGA","UGA"],
+      ["UKRAINE","Ukraine","UKRAINE","Ukraine","UA","UKR","UKR"],
+      ["UNITED ARAB EMIRATES","United Arab Emirates","UNITED ARAB EMIRATES","United Arab Emirates","AE","ARE","UAE"],
+      ["UNITED KINGDOM","United Kingdom","GREAT BRITAIN & NORTHERN IRELAND","Great Britain & Northern Ireland","GB","GBR","GBR"],
+      ["UNITED STATES","United States","UNITED STATES OF AMERICA","United States of America","US","USA","USA"],
+      ["UNITED STATES MINOR OUTLYING ISLANDS","United States Minor Outlying Islands","","","UM","UMI",""],
+      ["URUGUAY","Uruguay","URUGUAY","Uruguay","UY","URY","URU"],
+      ["UZBEKISTAN","Uzbekistan","UZBEKISTAN","Uzbekistan","UZ","UZB","UZB"],
+      ["VANUATU","Vanuatu","VANUATU","Vanuatu","VU","VUT","VAN"],
+      ["VENEZUELA","Venezuela","VENEZUELA","Venezuela","VE","VEN","VEN"],
+      ["VIET NAM","Viet Nam","VIETNAM","Vietnam","VN","VNM","VIE"],
+      ["VIRGIN ISLANDS, BRITISH","Virgin Islands, British","BRITISH VIRGIN ISLANDS","British Virgin Islands","VG","VGB","IVB"],
+      ["VIRGIN ISLANDS, U.S.","Virgin Islands, U.S.","US VIRGIN ISLANDS","US Virgin Islands","VI","VIR","ISV"],
+      ["WALLIS AND FUTUNA","Wallis And Futuna","","","WF","WLF",""],
+      ["WESTERN SAHARA","Western Sahara","","","EH","ESH",""],
+      ["YEMEN","Yemen","YEMEN","Yemen","YE","YEM","YEM"],
+      ["ZAMBIA","Zambia","ZAMBIA","Zambia","ZM","ZMB","ZAM"],
+      ["ZIMBABWE","Zimbabwe","ZIMBABWE","Zimbabwe","ZW","ZWE","ZIM"],
+      ["SERBIA AND MONTENEGRO","Serbia and Montenegro","SERBIA AND MONTENEGRO","Serbia and Montenegro","CS","CSG","SCG"],
+      ["","","CHINESE TAIPEI","Chinese Taipei","","","TPE"],
+      ["ÅLAND ISLANDS","Åland Islands","","","AX","ALA",""]
+    ];
+
+    let activeFilter = "all";
+    let toastTimer = null;
+
+    const tbody = document.getElementById("codesTableBody");
+    const searchInput = document.getElementById("codeSearch");
+    const codeCountEl = document.getElementById("codeCount");
+    const emptyState = document.getElementById("emptyState");
+    const filterButtons = document.querySelectorAll(".code-filter-btn");
+    const copyToast = document.getElementById("copyToast");
+    const copyToastText = document.getElementById("copyToastText");
+
+    function showToast(message) {
+      copyToastText.textContent = message;
+      copyToast.classList.remove("opacity-0");
+      copyToast.classList.add("opacity-100");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        copyToast.classList.remove("opacity-100");
+        copyToast.classList.add("opacity-0");
+      }, 1800);
+    }
+
+    // Copy helper using document.execCommand for broad compatibility
+    function copyCode(text) {
+      if (!text) return;
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        showToast(`Copied "${text}" to clipboard`);
+      } catch (err) {
+        showToast("Unable to copy code");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function makeBadge(code, styleClasses) {
+      if (!code) {
+        return `<span class="text-slate-300 text-xs">&mdash;</span>`;
+      }
+      return `<button type="button" onclick="copyCode('${code}')" title="Click to copy ${code}" class="inline-flex items-center justify-center px-2.5 py-1 rounded-md font-mono text-xs font-semibold border transition cursor-pointer hover:scale-105 active:scale-95 ${styleClasses}">${code}</button>`;
+    }
+
+    function renderCodes() {
+      const q = searchInput.value.trim().toLowerCase();
+
+      const filtered = COUNTRY_CODES.filter(row => {
+        const [name, nameProper, iaafName, iaafProper, alpha2, alpha3, iaaf] = row;
+
+        if (activeFilter === "iaaf" && !iaaf) return false;
+        if (activeFilter === "diff" && (!iaaf || !alpha3 || alpha3 === iaaf)) return false;
+
+        if (!q) return true;
+        return (
+          name.toLowerCase().includes(q) ||
+          nameProper.toLowerCase().includes(q) ||
+          iaafName.toLowerCase().includes(q) ||
+          iaafProper.toLowerCase().includes(q) ||
+          alpha2.toLowerCase().includes(q) ||
+          alpha3.toLowerCase().includes(q) ||
+          iaaf.toLowerCase().includes(q)
+        );
+      });
+
+      codeCountEl.textContent = `Showing ${filtered.length} of ${COUNTRY_CODES.length} entries`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+      tbody.innerHTML = filtered.map((row, idx) => {
+        const [, nameProper, , iaafProper, alpha2, alpha3, iaaf] = row;
+        const isDifferent = alpha3 && iaaf && alpha3 !== iaaf;
+
+        return `
+          <tr class="${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'} hover:bg-blue-50/40 transition-colors">
+            <td class="py-3 px-4 font-medium text-slate-900">${nameProper || '<span class="text-slate-400 italic">None</span>'}</td>
+            <td class="py-3 px-4 text-slate-600">${iaafProper || '<span class="text-slate-300">&mdash;</span>'}</td>
+            <td class="py-3 px-4 text-center">${makeBadge(alpha2, 'bg-blue-50 text-navy-800 border-blue-200 hover:bg-blue-100')}</td>
+            <td class="py-3 px-4 text-center">${makeBadge(alpha3, 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200')}</td>
+            <td class="py-3 px-4 text-center">${makeBadge(iaaf, isDifferent ? 'bg-rose-50 text-crimson-700 border-rose-200 hover:bg-rose-100' : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100')}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    // Export full table as CSV
+    document.getElementById("downloadCsvBtn").addEventListener("click", () => {
+      const headers = ["name", "nameProper", "IAAFName", "IAAFNameProper", "alpha2", "alpha3", "IAAF"];
+      const csvRows = [headers.join(",")];
+      COUNTRY_CODES.forEach(row => {
+        const escaped = row.map(val => `"${String(val).replace(/"/g, '""')}"`);
+        csvRows.push(escaped.join(","));
+      });
+      const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "usatf-country-codes.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Downloaded usatf-country-codes.csv");
+    });
+
+    // Event Listeners
+    searchInput.addEventListener("input", renderCodes);
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeFilter = btn.dataset.filter;
+        filterButtons.forEach(b => {
+          b.className = "code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+        });
+        btn.className = "code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 text-white transition";
+        renderCodes();
+      });
+    });
+
+    document.getElementById("resetSearchBtn").addEventListener("click", () => {
+      searchInput.value = "";
+      activeFilter = "all";
+      filterButtons.forEach(b => {
+        b.className = b.dataset.filter === "all"
+          ? "code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 text-white transition"
+          : "code-filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+      });
+      renderCodes();
+    });
+
+    // Initial render
+    renderCodes();
+  </script>
+</body>
+</html>

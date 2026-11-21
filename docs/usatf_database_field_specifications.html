@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="USATF Records Database Specifications and field formatting guidelines." />
+  <meta name="author" content="Justin Kuo" />
+  <title>USATF Records — Database Field Specifications</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              900: '#0B1F3A',
+              800: '#132E52',
+              700: '#1C3F6E',
+            },
+            crimson: {
+              600: '#C8102E',
+              700: '#A50D26',
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-navy-900 text-white shadow-md sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-3">
+        <!-- Brand / Title -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-crimson-600 flex items-center justify-center font-extrabold text-lg tracking-tight shadow-sm shrink-0">
+            TF
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest text-slate-300 font-semibold">USATF Records Resources</p>
+            <h1 class="text-lg sm:text-xl font-bold leading-tight">Database Field Specifications</h1>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex flex-wrap items-center gap-2 text-sm font-medium">
+          <a href="database-fields.html" class="px-3 py-2 rounded-lg bg-white/15 text-white border border-white/20">
+            Database Fields
+          </a>
+          <a href="country-codes.html" class="px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">
+            Country Codes
+          </a>
+          <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-crimson-600 hover:bg-crimson-700 text-white transition inline-flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Repo
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+
+    <!-- Overview Card -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div class="space-y-3 max-w-4xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-navy-800 text-xs font-semibold">
+            41 Standard Fields &bull; Tab/CSV Import Schema
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
+            Records Database Specifications
+          </h2>
+          <p class="text-slate-600 leading-relaxed">
+            This reference defines the exact columns and formatting rules used to maintain the USA Track &amp; Field (USATF) records database. Record keepers typically maintain their records in Excel spreadsheets or CSV files and submit them to be merged into the master database and exported for upload to the USATF web servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="mt-6 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="relative flex-grow max-w-md">
+          <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+          <input
+            id="fieldSearch"
+            type="text"
+            placeholder="Filter fields by name, position, or description..."
+            class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-navy-700 focus:border-navy-700 text-sm transition"
+          />
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" data-filter="all" class="filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 text-white transition">All (41)</button>
+          <button type="button" data-filter="choice" class="filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Choice</button>
+          <button type="button" data-filter="text" class="filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Text</button>
+          <button type="button" data-filter="numeric" class="filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Numeric</button>
+          <button type="button" data-filter="code" class="filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Codes / Dates</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fields Table Section -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <h3 class="font-bold text-navy-900 text-base">Field Reference Table</h3>
+        <span id="visibleCount" class="text-xs font-medium text-slate-500">Showing 41 of 41 fields</span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-navy-900 text-white text-xs uppercase tracking-wider">
+              <th class="py-3.5 px-4 font-semibold w-20 text-center">Pos</th>
+              <th class="py-3.5 px-4 font-semibold w-64">Field Name</th>
+              <th class="py-3.5 px-4 font-semibold w-36">Data Type</th>
+              <th class="py-3.5 px-4 font-semibold">Format &amp; Description</th>
+            </tr>
+          </thead>
+          <tbody id="fieldsTableBody" class="divide-y divide-slate-200 text-sm">
+            <!-- Rendered by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty Search State -->
+      <div id="emptyState" class="hidden py-12 px-6 text-center">
+        <p class="text-slate-500 font-medium">No database fields matched your filter.</p>
+        <button id="resetFiltersBtn" type="button" class="mt-3 px-4 py-2 rounded-lg bg-navy-900 text-white text-sm font-medium hover:bg-navy-800 transition">
+          Reset Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Important Guidelines / Comments Section -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-navy-900">Data Entry Guidelines &amp; Notes</h3>
+          <p class="text-sm text-slate-500">Important rules to ensure clean uploads to the master USATF records database.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700 leading-relaxed">
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-navy-900 mb-1">Clean Whitespace &amp; Punctuation</h4>
+          <p>Remove leading or trailing spaces from all text fields. Check for stray punctuation—for example, a mark of <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">5:21:21.</code> has a trailing period that must be removed.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-navy-900 mb-1">Track Relays</h4>
+          <p>Set <strong>type</strong> to <em>relay</em>, <em>distance medley relay</em>, <em>shuttle hurdles relay</em>, or <em>sprint medley relay</em>. Enter the total relay distance (e.g., <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">3200</code> for 4&times;800m; <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">4000</code> for DMR). Put the team name in <strong>affiliation</strong> and members in the relay leg fields. Open track relays may have both a <strong>USA National Team</strong> record and a club relay record for the same distance.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-navy-900 mb-1">Road Relays (Ekiden)</h4>
+          <p>Set <strong>type</strong> to <em>relay</em>, <strong>Implement height/weight</strong> to <em>5-leg</em> or <em>6-leg</em>, <strong>distance</strong> to <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">42.195</code>, and <strong>units</strong> to <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">km</code>. Enter the team name in <strong>affiliation</strong> and runners in the relay leg fields.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-navy-900 mb-1">Women's Only Races</h4>
+          <p>Indicate women-only races with <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">yes</code> in column 40 (<strong>women's only race</strong>). For mixed-gender races, use <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">no</code> or leave blank. Road events may have two records per distance (women-only and mixed), whereas track events 5000m and up have a single record regardless of mixed genders.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-navy-900 mb-1">State &amp; Country Separation</h4>
+          <p>Keep <strong>event city</strong>, <strong>event state</strong>, and <strong>event country</strong> separate (e.g., for <em>Ottawa, CAN</em>, enter <em>Ottawa</em> in city and <em>CA</em> in country). Whenever a 2-letter US state is entered in <strong>home state</strong> or <strong>event state</strong>, set the corresponding country field to <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">US</code>. See the <a href="country-codes.html" class="text-crimson-600 font-semibold hover:underline">Country Codes</a> page for ISO 3166 codes.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-navy-900 mb-1">Duplicate Records Across Categories</h4>
+          <p>Create separate duplicate rows when one mark qualifies for multiple categories—for example, an Open record that is also an All-Comers record, or a 40-year-old athlete who sets both an <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">open</code> and a <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">40-44</code> record.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 md:col-span-2">
+          <h4 class="font-bold text-navy-900 mb-1">File Naming &amp; Submissions</h4>
+          <p>When submitting spreadsheets, include the date in the filename (e.g., <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">2026-11-21-LDR-records.xlsx</code> or <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">2026-11-21-mastersRW.csv</code>) to avoid version confusion. For large Excel files sent via email, compressing them as <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">.zip</code> or <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">.7z</code> significantly reduces attachment size.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>USA Track &amp; Field Records Documentation &bull; Maintained by Justin Kuo</p>
+      <div class="flex items-center gap-4">
+        <a href="database-fields.html" class="hover:text-navy-900 transition">Database Fields</a>
+        <span>&bull;</span>
+        <a href="country-codes.html" class="hover:text-navy-900 transition">Country Codes</a>
+        <span>&bull;</span>
+        <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="hover:text-navy-900 transition">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Complete specification dataset for all 41 USATF database fields
+    const DB_FIELDS = [
+      {
+        pos: 1,
+        name: "Order",
+        category: "numeric",
+        typeLabel: "nnnn.n",
+        descriptionHtml: `
+          <p class="mb-2">Used for sorting records numerically. Determines display order for distance and field events. Recommended grouping ranges:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 font-mono text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 text-slate-700">
+            <div><span class="font-semibold text-navy-900">00000–09999</span> Men's Track &amp; Field</div>
+            <div><span class="font-semibold text-navy-900">10000–19999</span> Women's Track &amp; Field</div>
+            <div><span class="font-semibold text-navy-900">20000–39999</span> Men's &amp; Women's LDR</div>
+            <div><span class="font-semibold text-navy-900">40000–59999</span> Masters Track &amp; Field</div>
+            <div><span class="font-semibold text-navy-900">70000–74999</span> Men's Race Walk</div>
+            <div><span class="font-semibold text-navy-900">75000–79999</span> Women's Race Walk</div>
+            <div><span class="font-semibold text-navy-900">80000–84999</span> Youth Boys' Track &amp; Field</div>
+            <div><span class="font-semibold text-navy-900">85000–89999</span> Youth Girls' Track &amp; Field</div>
+            <div><span class="font-semibold text-navy-900">90000–99999</span> Handicap</div>
+          </div>
+        `
+      },
+      {
+        pos: 2,
+        name: "world/american",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `
+          <p class="mb-2"><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">world</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">american</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">championship</code></p>
+          <p class="text-slate-600">Lowercase only. Use <em>championship</em> for American Outdoor/Indoor Championship Meet records. Create duplicate rows if a mark covers multiple categories (e.g., both World and American).</p>
+        `
+      },
+      {
+        pos: 3,
+        name: "indoor/outdoor/road",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `<p><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">indoor</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">outdoor</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">road</code></p>`
+      },
+      {
+        pos: 4,
+        name: "open/junior/masters/youth/all-comers/collegiate",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `
+          <p class="mb-2 font-mono text-xs leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+            open, junior, u20, 30-39, 35-39, 40-44, 40-49, 45-49, 50-54, 50-59, 55-59, 60-64, 60-69, 65-69, 70-79, 70-74, 75-79, 80-84, 80-89, 85-89, 90-94, 95+over, 95-99, 100-104, sub-bantam, bantam, midget, youth, intermediate, young, all-comers, master all-comers
+          </p>
+          <p class="text-slate-600 text-xs"><strong>Note:</strong> Although modern youth age groups are 8 &amp; under, 9–10, 11–12, 13–14, 15–16, 17–18, legacy group names are still required for certain uploads.</p>
+        `
+      },
+      {
+        pos: 5,
+        name: "Handicap",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `<p><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">deaf</code> (currently not printed)</p>`
+      },
+      {
+        pos: 6,
+        name: "men/women",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `<p><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">men</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">women</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">mixed</code></p>`
+      },
+      {
+        pos: 7,
+        name: "status (ratified/pending)",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `
+          <p class="mb-2"><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">ratified</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">pending</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">ratified-s</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">pending-s</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">rejected</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">unvalidatable</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">vacated</code></p>
+          <p class="text-slate-600"><em>ratified-s</em> and <em>pending-s</em> indicate the mark has been superseded. Records removed due to doping receive a status of <em>vacated</em>. Do not use <em>best</em> in this column (use column 41 instead).</p>
+        `
+      },
+      {
+        pos: 8,
+        name: "distance",
+        category: "numeric",
+        typeLabel: "nnnnnn.nnnn",
+        descriptionHtml: `
+          <p class="mb-1">Metric distance or hours. Enter full length for relays (e.g., <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">3200</code> for 4&times;800m).</p>
+          <p class="text-slate-600">Half-marathon: <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">21.0975</code> &bull; Marathon: <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">42.195</code> &bull; Hour events: <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">1</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">2</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">12</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">24</code>, or <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">144</code> for 6-day events.</p>
+        `
+      },
+      {
+        pos: 9,
+        name: "units",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `<p><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">hr</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">km</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">m</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">mi</code> — Used for running/walking events without periods.</p>`
+      },
+      {
+        pos: 10,
+        name: "type",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `
+          <p class="mb-2"><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">distance medley relay</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">hurdles</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">race walk</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">relay</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">shuttle hurdles relay</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">sprint medley relay</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">steeplechase</code></p>
+          <p class="text-slate-600 text-xs">Examples: 4&times;100m relay &rarr; type <em>relay</em>, distance <em>400</em>, units <em>m</em>. Ekiden marathon relay &rarr; type <em>relay</em>, distance <em>42.195</em>, units <em>km</em>, implement <em>5-leg</em> or <em>6-leg</em>.</p>
+        `
+      },
+      {
+        pos: 11,
+        name: "name (for field/combined)",
+        category: "choice",
+        typeLabel: "choice",
+        descriptionHtml: `
+          <p class="font-mono text-xs leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+            decathlon, discus throw, hammer throw, heptathlon, high jump, javelin throw, long jump, mini javelin throw, pentathlon, pole vault, shot put, superweight throw, triathlon, triple jump, weight pentathlon, weight throw
+          </p>
+        `
+      },
+      {
+        pos: 12,
+        name: "Implement height/weight",
+        category: "text",
+        typeLabel: "text",
+        descriptionHtml: `
+          <p class="mb-1">Hurdle height, implement weight, new/old implement, mini, or relay legs.</p>
+          <p class="text-slate-600 text-xs">Examples: <code class="font-mono bg-slate-100 px-1 rounded">3 kg</code>, <code class="font-mono bg-slate-100 px-1 rounded">4 kg</code>, <code class="font-mono bg-slate-100 px-1 rounded">16 lbs.</code> (no period for metric, period for imperial); <code class="font-mono bg-slate-100 px-1 rounded">27"</code>, <code class="font-mono bg-slate-100 px-1 rounded">30"</code>, <code class="font-mono bg-slate-100 px-1 rounded">33"</code> for Masters hurdles; <code class="font-mono bg-slate-100 px-1 rounded">mini</code> for Turbojav; <code class="font-mono bg-slate-100 px-1 rounded">5-leg</code> / <code class="font-mono bg-slate-100 px-1 rounded">6-leg</code> for Ekiden.</p>
+        `
+      },
+      {
+        pos: 13,
+        name: "marks",
+        category: "numeric",
+        typeLabel: "numeric",
+        descriptionHtml: `
+          <p class="mb-1">Athlete's time, distance, or points. Numeric only (except aided road marks). Do not include <em>m</em> or <em>pts</em>.</p>
+          <p class="text-slate-600 text-xs">Examples: <code class="font-mono bg-slate-100 px-1 rounded">9.77</code>, <code class="font-mono bg-slate-100 px-1 rounded">1:41.11</code>, <code class="font-mono bg-slate-100 px-1 rounded">8397</code>, <code class="font-mono bg-slate-100 px-1 rounded">1:08:13a</code> (lowercase <em>a</em> indicates an aided LDR course).</p>
+        `
+      },
+      { pos: 14, name: "first name", category: "text", typeLabel: "text", descriptionHtml: `<p>Athlete's first name. Leave blank if <strong>type</strong> is relay.</p>` },
+      { pos: 15, name: "last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Athlete's last name. Leave blank if <strong>type</strong> is relay.</p>` },
+      { pos: 16, name: "age", category: "numeric", typeLabel: "nn (optional)", descriptionHtml: `<p>Athlete's age in years. Must be numeric or left blank; non-numeric characters are removed.</p>` },
+      { pos: 17, name: "affiliation", category: "text", typeLabel: "text", descriptionHtml: `<p>Athlete's club, country, or relay team. If a country, use the 3-letter World Athletics / IAAF code (e.g., <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">USA</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">NZL</code>, <em>adidas</em>, <em>New England Walkers</em>).</p>` },
+      { pos: 18, name: "home city", category: "text", typeLabel: "text", descriptionHtml: `<p>Athlete's home city.</p>` },
+      { pos: 19, name: "home state", category: "code", typeLabel: "AA (USPS)", descriptionHtml: `<p>2-letter USPS state code.</p>` },
+      { pos: 20, name: "home country", category: "code", typeLabel: "AA (ISO 3166)", descriptionHtml: `<p>2-letter ISO 3166 country code. If <strong>home state</strong> is populated with a US state, set <strong>home country</strong> to <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">US</code>.</p>` },
+      { pos: 21, name: "event name", category: "text", typeLabel: "text", descriptionHtml: `<p>Name of the meet or competition.</p>` },
+      { pos: 22, name: "event city", category: "text", typeLabel: "text", descriptionHtml: `<p>City where the event was held. Do not include the state or country in this field.</p>` },
+      { pos: 23, name: "event state", category: "code", typeLabel: "AA (USPS)", descriptionHtml: `<p>2-letter USPS state code.</p>` },
+      {
+        pos: 24,
+        name: "event country",
+        category: "code",
+        typeLabel: "AA (ISO 3166)",
+        descriptionHtml: `
+          <p class="mb-1">2-letter ISO 3166 country code where the event was held.</p>
+          <p class="text-slate-600 text-xs">If a territory has both a USPS code and an ISO 3166 code (e.g., Puerto Rico <code class="font-mono bg-slate-100 px-1 rounded">PR</code>), ISO 3166 takes precedence: leave <strong>event state</strong> blank and put <code class="font-mono bg-slate-100 px-1 rounded">PR</code> in <strong>event country</strong>.</p>
+        `
+      },
+      { pos: 25, name: "event date", category: "code", typeLabel: "YYYY-MM-DD", descriptionHtml: `<p>ISO 8601 date (or starting date) the event was held.</p>` },
+      { pos: 26, name: "event date - end", category: "code", typeLabel: "YYYY-MM-DD", descriptionHtml: `<p>ISO 8601 final date if the event spanned multiple days (e.g., combined events).</p>` },
+      { pos: 27, name: "comments", category: "text", typeLabel: "text", descriptionHtml: `<p>Additional notes, wind readings, or facility/venue details.</p>` },
+      { pos: 28, name: "relay leg 1 first name", category: "text", typeLabel: "text", descriptionHtml: `<p>First name of athlete running relay leg 1.</p>` },
+      { pos: 29, name: "relay leg 1 last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Last name of athlete running relay leg 1.</p>` },
+      { pos: 30, name: "relay leg 2 first name", category: "text", typeLabel: "text", descriptionHtml: `<p>First name of athlete running relay leg 2.</p>` },
+      { pos: 31, name: "relay leg 2 last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Last name of athlete running relay leg 2.</p>` },
+      { pos: 32, name: "relay leg 3 first name", category: "text", typeLabel: "text", descriptionHtml: `<p>First name of athlete running relay leg 3.</p>` },
+      { pos: 33, name: "relay leg 3 last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Last name of athlete running relay leg 3.</p>` },
+      { pos: 34, name: "relay leg 4 first name", category: "text", typeLabel: "text", descriptionHtml: `<p>First name of athlete running relay leg 4.</p>` },
+      { pos: 35, name: "relay leg 4 last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Last name of athlete running relay leg 4.</p>` },
+      { pos: 36, name: "relay leg 5 first name", category: "text", typeLabel: "text", descriptionHtml: `<p>First name of athlete running relay leg 5.</p>` },
+      { pos: 37, name: "relay leg 5 last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Last name of athlete running relay leg 5.</p>` },
+      { pos: 38, name: "relay leg 6 first name", category: "text", typeLabel: "text", descriptionHtml: `<p>First name of athlete running relay leg 6.</p>` },
+      { pos: 39, name: "relay leg 6 last name", category: "text", typeLabel: "text", descriptionHtml: `<p>Last name of athlete running relay leg 6.</p>` },
+      { pos: 40, name: "women's only race", category: "choice", typeLabel: "choice", descriptionHtml: `<p><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">yes</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">no</code> — Enter <em>yes</em> if the run or race walk was restricted to women; otherwise enter <em>no</em>.</p>` },
+      { pos: 41, name: "performance", category: "choice", typeLabel: "choice", descriptionHtml: `<p><code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">record</code>, <code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">best</code> — Use <em>best</em> for marks that do not meet USATF record criteria (primarily used in LDR).</p>` }
+    ];
+
+    const badgeColors = {
+      choice: "bg-indigo-50 text-indigo-700 border-indigo-200",
+      text: "bg-slate-100 text-slate-700 border-slate-200",
+      numeric: "bg-emerald-50 text-emerald-700 border-emerald-200",
+      code: "bg-amber-50 text-amber-800 border-amber-200"
+    };
+
+    let activeFilter = "all";
+    const tbody = document.getElementById("fieldsTableBody");
+    const searchInput = document.getElementById("fieldSearch");
+    const visibleCountEl = document.getElementById("visibleCount");
+    const emptyState = document.getElementById("emptyState");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    function renderFields() {
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = DB_FIELDS.filter(field => {
+        const matchesFilter = activeFilter === "all" || field.category === activeFilter;
+        const plainDesc = field.descriptionHtml.replace(/<[^>]*>/g, " ").toLowerCase();
+        const matchesQuery =
+          !query ||
+          String(field.pos).includes(query) ||
+          field.name.toLowerCase().includes(query) ||
+          field.typeLabel.toLowerCase().includes(query) ||
+          plainDesc.includes(query);
+        return matchesFilter && matchesQuery;
+      });
+
+      visibleCountEl.textContent = `Showing ${filtered.length} of ${DB_FIELDS.length} fields`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+      tbody.innerHTML = filtered.map((field, idx) => `
+        <tr class="${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'} hover:bg-blue-50/40 transition-colors align-top">
+          <td class="py-4 px-4 text-center font-mono font-semibold text-navy-900">${field.pos}</td>
+          <td class="py-4 px-4 font-semibold text-slate-900 break-words">${field.name}</td>
+          <td class="py-4 px-4">
+            <span class="inline-block px-2.5 py-1 rounded-md text-xs font-mono font-medium border ${badgeColors[field.category]}">
+              ${field.typeLabel}
+            </span>
+          </td>
+          <td class="py-4 px-4 text-slate-700 leading-relaxed">${field.descriptionHtml}</td>
+        </tr>
+      `).join("");
+    }
+
+    // Event Listeners
+    searchInput.addEventListener("input", renderFields);
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeFilter = btn.dataset.filter;
+        filterButtons.forEach(b => {
+          b.className = "filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+        });
+        btn.className = "filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 text-white transition";
+        renderFields();
+      });
+    });
+
+    document.getElementById("resetFiltersBtn").addEventListener("click", () => {
+      searchInput.value = "";
+      activeFilter = "all";
+      filterButtons.forEach(b => {
+        b.className = b.dataset.filter === "all"
+          ? "filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 text-white transition"
+          : "filter-btn px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+      });
+      renderFields();
+    });
+
+    // Initial render
+    renderFields();
+  </script>
+</body>
+</html>
