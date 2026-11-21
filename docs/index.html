@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="USA Track & Field (USATF) Records Committee documentation, database field specifications, and country/World Athletics affiliation codes." />
+  <meta name="author" content="Justin Kuo" />
+  <title>USATF Records — Documentation &amp; Resources</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              900: '#0B1F3A',
+              800: '#132E52',
+              700: '#1C3F6E',
+            },
+            crimson: {
+              600: '#C8102E',
+              700: '#A50D26',
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-navy-900 text-white shadow-md sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-3">
+        <!-- Brand / Title -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-lg bg-crimson-600 group-hover:bg-crimson-700 transition flex items-center justify-center font-extrabold text-lg tracking-tight shadow-sm shrink-0">
+            TF
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest text-slate-300 font-semibold">USA Track &amp; Field</p>
+            <h1 class="text-lg sm:text-xl font-bold leading-tight">Records Resources</h1>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="flex flex-wrap items-center gap-2 text-sm font-medium">
+          <a href="index.html" class="px-3 py-2 rounded-lg bg-white/15 text-white border border-white/20">
+            Home
+          </a>
+          <a href="database-fields.html" class="px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">
+            Database Fields
+          </a>
+          <a href="country-codes.html" class="px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">
+            Country Codes
+          </a>
+          <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-crimson-600 hover:bg-crimson-700 text-white transition inline-flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Repo
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-10">
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 text-white rounded-2xl shadow-md p-8 sm:p-10 relative overflow-hidden">
+      <div class="relative z-10 max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wide text-slate-100">
+          USATF Records Committee &bull; Reference Documentation
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+          Track &amp; Field Records Data Standards
+        </h2>
+        <p class="text-slate-200 text-base sm:text-lg leading-relaxed">
+          Official field specifications, formatting guidelines, and ISO 3166 / World Athletics affiliation code references used to maintain and publish USA Track &amp; Field records.
+        </p>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <a href="database-fields.html" class="px-5 py-3 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white text-sm font-semibold transition shadow-sm inline-flex items-center gap-2">
+            View Database Fields
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="country-codes.html" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold transition inline-flex items-center gap-2">
+            Browse Country Codes
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resource Cards Grid -->
+    <section>
+      <div class="mb-5">
+        <h3 class="text-xl font-bold text-navy-900">Reference Guides</h3>
+        <p class="text-sm text-slate-500">Select a resource below to search, filter, or export reference data.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1: Database Fields -->
+        <a href="database-fields.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 sm:p-7 transition flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-navy-800 flex items-center justify-center group-hover:bg-navy-900 group-hover:text-white transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">41 Fields</span>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-navy-900 group-hover:text-crimson-600 transition">
+                Database Field Specifications
+              </h4>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                Complete column-by-column schema for the USATF records import format, including sorting order ranges, event types, relay leg formatting, and submission guidelines.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-600">Instant Search</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-600">Type Filters</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-600">Entry Guidelines</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-navy-800 group-hover:text-crimson-600 transition">
+            <span>Open Database Specs</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+        <!-- Card 2: Country Codes -->
+        <a href="country-codes.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 sm:p-7 transition flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div class="w-12 h-12 rounded-xl bg-rose-50 text-crimson-600 flex items-center justify-center group-hover:bg-crimson-600 group-hover:text-white transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">241 Entries</span>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-navy-900 group-hover:text-crimson-600 transition">
+                Country &amp; World Athletics Codes
+              </h4>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                Searchable lookup table mapping ISO 3166 Alpha-2 and Alpha-3 country codes to 3-letter World Athletics (IAAF) affiliation codes, with click-to-copy badges and CSV export.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-600">Click-to-Copy</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-600">Mismatch Filter</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-600">CSV Export</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-navy-800 group-hover:text-crimson-600 transition">
+            <span>Open Country Codes</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Official Records & External Resources -->
+    <section>
+      <div class="mb-5">
+        <h3 class="text-xl font-bold text-navy-900">Official Records &amp; External Resources</h3>
+        <p class="text-sm text-slate-500">Direct links to official USATF, World Athletics, and Para Athletics record databases and application forms.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- USATF American Records -->
+        <a href="https://www.usatf.org/resources/statistics/records/american-records" target="_blank" rel="noopener noreferrer" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 transition flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-navy-800 text-xs font-semibold">USATF</span>
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-crimson-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-navy-900 group-hover:text-crimson-600 transition">
+              USATF American Records Database
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Browse the official USA Track &amp; Field database of ratified and pending American records across Track &amp; Field, Road Running, and Race Walking.
+            </p>
+          </div>
+          <p class="mt-4 text-xs font-mono text-slate-400 truncate">usatf.org/resources/statistics/records/american-records</p>
+        </a>
+
+        <!-- USATF Record Applications -->
+        <a href="https://www.usatf.org/resources/statistics/record-applications" target="_blank" rel="noopener noreferrer" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 transition flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-navy-800 text-xs font-semibold">USATF</span>
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-crimson-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-navy-900 group-hover:text-crimson-600 transition">
+              USATF Record Applications
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Access official record application forms, documentation checklists, and submission guidelines for ratifying new American and USATF records.
+            </p>
+          </div>
+          <p class="mt-4 text-xs font-mono text-slate-400 truncate">usatf.org/resources/statistics/record-applications</p>
+        </a>
+
+        <!-- World Athletics World Records -->
+        <a href="https://worldathletics.org/records/by-category/world-records" target="_blank" rel="noopener noreferrer" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 transition flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-rose-50 text-crimson-700 text-xs font-semibold">World Athletics</span>
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-crimson-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-navy-900 group-hover:text-crimson-600 transition">
+              World Athletics World Records
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Official global records maintained by World Athletics across Senior, U20, Short Track, Road, and Mixed disciplines.
+            </p>
+          </div>
+          <p class="mt-4 text-xs font-mono text-slate-400 truncate">worldathletics.org/records/by-category/world-records</p>
+        </a>
+
+        <!-- Para Athletics Track & Field Records -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold">Para Athletics</span>
+            </div>
+            <h4 class="text-lg font-bold text-navy-900">
+              Para Athletics Track &amp; Field Records
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Official national and world records for Para Track &amp; Field across all classifications and disciplines.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-3 text-xs font-semibold">
+            <a href="https://www.usparatf.org/records" target="_blank" rel="noopener noreferrer" class="text-navy-800 hover:text-crimson-600 transition inline-flex items-center gap-1">
+              USATF Para National Records
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <span class="text-slate-300">&bull;</span>
+            <a href="https://www.paralympic.org/athletics/records" target="_blank" rel="noopener noreferrer" class="text-navy-800 hover:text-crimson-600 transition inline-flex items-center gap-1">
+              World Para Athletics Records
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Repository Info Card -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-1.5 max-w-2xl">
+        <h3 class="text-lg font-bold text-navy-900">Source Files &amp; Contributions</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          All documentation pages, CSV templates, and records maintenance resources are version-controlled on GitHub. If you spot a correction or an updated World Athletics country code, feel free to submit an issue or pull request.
+        </p>
+      </div>
+      <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="shrink-0 px-5 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center justify-center gap-2 shadow-sm">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>USA Track &amp; Field Records Documentation &bull; Maintained by Justin Kuo</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-navy-900 transition">Home</a>
+        <span>&bull;</span>
+        <a href="database-fields.html" class="hover:text-navy-900 transition">Database Fields</a>
+        <span>&bull;</span>
+        <a href="country-codes.html" class="hover:text-navy-900 transition">Country Codes</a>
+        <span>&bull;</span>
+        <a href="https://github.com/justinfkuo/records" target="_blank" rel="noopener noreferrer" class="hover:text-navy-900 transition">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
