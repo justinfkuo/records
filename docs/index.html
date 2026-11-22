@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="USA Track & Field (USATF) Records Committee documentation, database field specifications, and country/World Athletics affiliation codes." />
+  <meta name="description" content="USA Track & Field (USATF) Records hub, official statistics, Para, LDR, and Masters records databases, plus Records Committee documentation, database field specifications, and country codes." />
   <meta name="author" content="Justin Kuo" />
-  <title>USATF Records — Documentation &amp; Resources</title>
+  <title>USATF Records — Databases, Documentation &amp; Resources</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter & JetBrains Mono -->
@@ -58,6 +58,9 @@
           <a href="index.html" class="px-3 py-2 rounded-lg bg-white/15 text-white border border-white/20">
             Home
           </a>
+          <a href="#records-databases" class="px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">
+            Records
+          </a>
           <a href="database-fields.html" class="px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">
             Database Fields
           </a>
@@ -74,44 +77,265 @@
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-10">
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-12">
 
     <!-- Hero Banner -->
     <section class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 text-white rounded-2xl shadow-md p-8 sm:p-10 relative overflow-hidden">
       <div class="relative z-10 max-w-3xl space-y-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wide text-slate-100">
-          USATF Records Committee &bull; Reference Documentation
+          USATF Records Committee &bull; Records &amp; Reference Hub
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-          Track &amp; Field Records Data Standards
+          USA Track &amp; Field Records &amp; Data Standards
         </h2>
         <p class="text-slate-200 text-base sm:text-lg leading-relaxed">
-          Official field specifications, formatting guidelines, and ISO 3166 / World Athletics affiliation code references used to maintain and publish USA Track &amp; Field records.
+          Quick access to official USATF statistics, American, Para, Long Distance Running, and Masters records databases—alongside the field specifications and ISO / World Athletics code references used to maintain them.
         </p>
         <div class="pt-2 flex flex-wrap gap-3">
-          <a href="database-fields.html" class="px-5 py-3 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white text-sm font-semibold transition shadow-sm inline-flex items-center gap-2">
-            View Database Fields
+          <a href="https://www.usatf.org/resources/statistics" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white text-sm font-semibold transition shadow-sm inline-flex items-center gap-2">
+            Official USATF Statistics &amp; Records
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
-          <a href="country-codes.html" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold transition inline-flex items-center gap-2">
-            Browse Country Codes
+          <a href="#reference-guides" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold transition inline-flex items-center gap-2">
+            Database Specs &amp; Country Codes
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Resource Cards Grid -->
-    <section>
+    <!-- Primary Section: Track & Field Records Databases -->
+    <section id="records-databases" class="scroll-mt-24">
       <div class="mb-5">
-        <h3 class="text-xl font-bold text-navy-900">Reference Guides</h3>
-        <p class="text-sm text-slate-500">Select a resource below to search, filter, or export reference data.</p>
+        <h3 class="text-2xl font-bold text-navy-900">Track &amp; Field Records Databases</h3>
+        <p class="text-sm text-slate-500 mt-1">
+          Official USATF records and specialized committee-maintained databases across Open, U20, Para, Long Distance Running, and Masters divisions.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- Card 1: Database Fields -->
+        <!-- Panel 1: Official USATF Statistics & Records -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div class="w-12 h-12 rounded-xl bg-rose-50 text-crimson-600 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-crimson-600/10 text-crimson-700 font-mono text-xs font-semibold">Official USATF</span>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-navy-900">
+                USATF Statistics &amp; Official Records
+              </h4>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                The primary USA Track &amp; Field statistics portal at <a href="https://www.usatf.org/resources/statistics" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">usatf.org/resources/statistics</a> publishes ratified records alongside national champions, season top lists, and historical data.
+              </p>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">American Records Database:</strong> Filterable database and printer-friendly lists for Open &amp; U20 (Indoor &amp; Outdoor) and U.S. All-Comers records.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">World &amp; Championship Meet Records:</strong> Official World records and USATF National Championship meet marks.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">Statistics &amp; Tools:</strong> USATF Champions, Season Top Lists, Team USA Medal Tables, Annual Awards, Calculators, and Record Applications.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+            <a href="https://www.usatf.org/resources/statistics" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white text-sm font-semibold transition inline-flex items-center gap-2 shadow-sm">
+              USATF Statistics Hub
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <a href="https://www.usatf.org/resources/statistics/records/american-records" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-navy-900 text-sm font-semibold transition inline-flex items-center gap-2">
+              American Records
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Panel 2: USATF Paralympic / Para Track & Field Records -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">Para T&amp;F</span>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-navy-900">
+                USATF Paralympic Track &amp; Field Records
+              </h4>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                U.S. Paralympic (Para) Track &amp; Field records are maintained separately from the main USATF website on the dedicated U.S. Paralympics Track &amp; Field portal (<a href="https://www.usparatf.org/records" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">usparatf.org</a>) and by Adaptive Track &amp; Field USA.
+              </p>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">USATF Para National Records (<a href="https://www.usparatf.org/records" target="_blank" rel="noopener noreferrer" class="text-crimson-600 hover:underline">usparatf.org/records</a>):</strong> Interactive national records database by sport class, Track &amp; Field record application forms, ratification rules, and links to World Para Athletics (WPA) Americas &amp; World records.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">Adaptive Track &amp; Field USA (<a href="https://www.atfusa.org/RECORDS/RECORDS.htm" target="_blank" rel="noopener noreferrer" class="text-crimson-600 hover:underline">atfusa.org</a>):</strong> Maintains U.S. Junior (U11, U14, U17, U20), Masters (M35, M50, M60), and Open adaptive track &amp; field records under WPA and ATFUSA rules.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+            <a href="https://www.usparatf.org/records" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center gap-2 shadow-sm">
+              Visit usparatf.org/records
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <a href="https://www.atfusa.org/RECORDS/RECORDS.htm" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-navy-900 text-sm font-semibold transition inline-flex items-center gap-2">
+              ATFUSA Records
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Panel 3: Long Distance Road Running Records -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">LDR Records</span>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-navy-900">
+                Long Distance Road Running Records
+              </h4>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                U.S. road running and long-distance track records maintained by Andy Carr are hosted at <a href="http://usatfldrrecords.org" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">usatfldrrecords.org</a> (the USATF Long Distance Running Records database). Look up American Open, Junior, and Masters age-group marks as well as record application forms and verification criteria.
+              </p>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">Search by Event:</strong> Filter separately for Road or Track distances.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">Search by Age Group:</strong> Look up age-specific records for both Road and Track events.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">Search by Name:</strong> Look up specific marks held by an individual Athlete or Club.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+            <a href="http://usatfldrrecords.org" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center gap-2 shadow-sm">
+              Visit usatfldrrecords.org
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Panel 4: Masters Track & Field Records -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">Masters T&amp;F</span>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-navy-900">
+                Masters Track &amp; Field Records
+              </h4>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                U.S. Masters Track &amp; Field records are maintained separately from the main USATF site on the USATF Masters website, with a dedicated lookup database at <a href="http://masterstrackandfield.org" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">masterstrackandfield.org</a>.
+              </p>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span><strong class="text-slate-800">USATF Masters Hub (<a href="https://usatfmasters.org/records/" target="_blank" rel="noopener noreferrer" class="text-crimson-600 hover:underline">usatfmasters.org/records/</a>):</strong> Maintained by the USATF Masters Track &amp; Field (MTF) committee. Houses links to American and World Masters Indoor, Outdoor, and Race Walk records (5-year age brackets starting at age 35), application forms, and ratification statuses.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
+                <span>
+                  <strong class="text-slate-800">USA Masters TF Record Lookup (<a href="http://masterstrackandfield.org" target="_blank" rel="noopener noreferrer" class="text-crimson-600 hover:underline">masterstrackandfield.org</a>):</strong>
+                  Search Indoor and Outdoor marks by Event, Age Group, Athlete, or Club.
+                  <span class="inline-block mt-1 sm:mt-0 sm:ml-1 px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-800 text-xs font-medium">Note: Accurate through 1/1/2023</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+            <a href="https://usatfmasters.org/records/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center gap-2 shadow-sm">
+              USATF Masters Hub
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <a href="http://masterstrackandfield.org" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-navy-900 text-sm font-semibold transition inline-flex items-center gap-2">
+              Lookup Database
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Secondary Section: Reference Guides & Data Standards -->
+    <section id="reference-guides" class="scroll-mt-24">
+      <div class="mb-5">
+        <h3 class="text-xl font-bold text-navy-900">Committee Reference Guides &amp; Data Standards</h3>
+        <p class="text-sm text-slate-500 mt-1">
+          Internal schemas and code tables used by the Records Committee to prepare, validate, and merge records data.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card: Database Fields -->
         <a href="database-fields.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 sm:p-7 transition flex flex-col justify-between">
           <div class="space-y-4">
             <div class="flex items-center justify-between gap-3">
@@ -147,7 +371,7 @@
           </div>
         </a>
 
-        <!-- Card 2: Country Codes -->
+        <!-- Card: Country Codes -->
         <a href="country-codes.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md border border-slate-200 hover:border-navy-700/40 p-6 sm:p-7 transition flex flex-col justify-between">
           <div class="space-y-4">
             <div class="flex items-center justify-between gap-3">
@@ -186,114 +410,6 @@
       </div>
     </section>
 
-    <!-- External Records Databases -->
-    <section>
-      <div class="mb-5">
-        <h3 class="text-xl font-bold text-navy-900">Additional Records Databases</h3>
-        <p class="text-sm text-slate-500">Committee-maintained lookup databases for Long Distance Running and Masters Track &amp; Field records. Official records are published on <a href="https://www.usatf.org/resources/statistics/records" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">usatf.org</a>.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Card 3: Long Distance Road Running Records -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">LDR Records</span>
-            </div>
-
-            <div>
-              <h4 class="text-xl font-bold text-navy-900">
-                Long Distance Road Running Records
-              </h4>
-              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-                U.S. road running and long-distance track records maintained by Andy Carr are hosted at <a href="https://usatfldrrecords.org" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">usatfldrrecords.org</a> (the USATF Long Distance Running Records database). The site allows you to look up American records—including Open, Junior, and Masters age-group marks—as well as access record application forms and verification criteria.
-              </p>
-            </div>
-
-            <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex items-start gap-2">
-                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
-                <span><strong class="text-slate-800">Search by Event:</strong> Filter separately for Road or Track distances.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
-                <span><strong class="text-slate-800">Search by Age Group:</strong> Look up age-specific records for both Road and Track events.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
-                <span><strong class="text-slate-800">Search by Name:</strong> Look up specific marks held by an individual Athlete or Club.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
-            <a href="https://usatfldrrecords.org" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center gap-2 shadow-sm">
-              Visit usatfldrrecords.org
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 4: Masters Track & Field Records -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-semibold">Masters T&amp;F</span>
-            </div>
-
-            <div>
-              <h4 class="text-xl font-bold text-navy-900">
-                Masters Track &amp; Field Records
-              </h4>
-              <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-                U.S. Masters Track &amp; Field records are maintained separately from the main USATF site on the USATF Masters website, with a dedicated lookup database at <a href="http://masterstrackandfield.org" target="_blank" rel="noopener noreferrer" class="text-crimson-600 font-medium hover:underline">masterstrackandfield.org</a>.
-              </p>
-            </div>
-
-            <ul class="space-y-2 text-sm text-slate-600">
-              <li class="flex items-start gap-2">
-                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
-                <span><strong class="text-slate-800">USATF Masters Hub (<a href="https://usatfmasters.org/records/" target="_blank" rel="noopener noreferrer" class="text-crimson-600 hover:underline">usatfmasters.org/records/</a>):</strong> Maintained by the USATF Masters Track &amp; Field (MTF) committee. It houses links to American and World Masters records for Indoor Track &amp; Field, Outdoor Track &amp; Field, and Race Walking (in 5-year age brackets starting at age 35), along with record application forms and ratification statuses.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-crimson-600 font-bold mt-0.5">&bull;</span>
-                <span><strong class="text-slate-800">Record Lookup Database (<a href="http://masterstrackandfield.org" target="_blank" rel="noopener noreferrer" class="text-crimson-600 hover:underline">masterstrackandfield.org</a>):</strong> Built in the same database format as the Long Distance Running records site, allowing you to search Indoor and Outdoor marks directly by Event, Age Group, Athlete, or Club.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
-            <a href="https://usatfmasters.org/records/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold transition inline-flex items-center gap-2 shadow-sm">
-              USATF Masters Hub
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-            <a href="http://masterstrackandfield.org" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-navy-900 text-sm font-semibold transition inline-flex items-center gap-2">
-              Lookup Database
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- Repository Info Card -->
     <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div class="space-y-1.5 max-w-2xl">
@@ -314,8 +430,10 @@
   <footer class="bg-white border-t border-slate-200 mt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <p>USA Track &amp; Field Records Documentation &bull; Maintained by Justin Kuo</p>
-      <div class="flex items-center gap-4">
+      <div class="flex flex-wrap items-center gap-4">
         <a href="index.html" class="hover:text-navy-900 transition">Home</a>
+        <span>&bull;</span>
+        <a href="#records-databases" class="hover:text-navy-900 transition">Records</a>
         <span>&bull;</span>
         <a href="database-fields.html" class="hover:text-navy-900 transition">Database Fields</a>
         <span>&bull;</span>

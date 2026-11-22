@@ -22,6 +22,6 @@ Official master CSV export and handover documentation for maintaining USA Track 
 
 1. Back up the master FileMaker Pro 7.0 (`.fp7`) database into `_local-only/database/`.
 2. Export the active-records CSV from FileMaker Pro 7.0 (verify Windows-1252 vs. UTF-8 encoding) and upload it to the USATF admin portal.
-3. Copy/save the exported CSV over `current-exports/usatf-american-records.csv`.
+3. Copy/save the exported CSV over `current-exports/usatf-records.csv`.
 4. Commit and push the updated CSV to GitHub.
 
